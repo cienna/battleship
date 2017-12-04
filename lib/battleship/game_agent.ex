@@ -5,7 +5,7 @@ defmodule Battleship.GameAgent do
 
   def start_link() do
     state0 = %{}
-    GenServer.start_link(__MODULE__, {:get, key})
+    GenServer.start_link(__MODULE__, state0, name: __MODULE__)
   end
 
   def get(key) do

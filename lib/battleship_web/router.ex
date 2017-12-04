@@ -29,5 +29,9 @@ defmodule BattleshipWeb.Router do
 
   def set_user(conn, _params) do
     user = "Player" <> Integer.to_string(:rand.uniform(100))
+    token = Phoenix.Token.sign(BattleshipWeb.Endpoint, "username", user)
+    conn
+    |> assign(:user_name, user)
+    |> assign(:user_token, token)
   end
 end

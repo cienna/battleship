@@ -2,6 +2,8 @@
 
 defmodule BattleshipWeb.PlayerChannel do
   use BattleshipWeb, :channel
+  alias Battleship.Game
+  alias Battleship.GameAgent
 
   def join("player:" <> name, _payload, socket) do
     if authorized?(socket, name) do
@@ -9,7 +11,7 @@ defmodule BattleshipWeb.PlayerChannel do
       GameAgent.put(name, game)
       socket = socket
       |> assign(:name, name)
-      {:ok, Game.client_view(game), socket}
+      {:ok, Game.client_view(game, name), socket}
     else
       {:error, %{reason: "unauthorized"}}
     end
@@ -29,7 +31,7 @@ defmodule BattleshipWeb.PlayerChannel do
 #  end
 
   # Add authorization logic here as required.
-  defp authorized?(_payload) do
+  defp authorized?(socket, name) do
     socket.assigns[:username] == name
   end
 end

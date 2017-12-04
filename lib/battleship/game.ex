@@ -16,8 +16,8 @@ defmodule Battleship.Game do
 #    if player == "challenger" do
 
     %{
-      myShips: chalShips,
-      guesses: chalGuesses
+      myShips: game.chalShips,
+      guesses: game.chalGuesses
     }
 #    end
 
