@@ -32,7 +32,7 @@ function renderHeader() {
 function start() {
   renderHeader();
 
-  let html = <h1>Hello, World</h1>;
+  let html = <h1>React deploys!</h1>;
   let main = document.getElementById('main');
 
   ReactDOM.render(html, main);
