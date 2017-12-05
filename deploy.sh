@@ -1,7 +1,7 @@
 #!/bin/bash
 # taken from numart lecture notes with slight modifications
 
-export PORT=8002
+export PORT=8003
 DIR=$1
 
 if [ ! -d "$DIR" ]; then
